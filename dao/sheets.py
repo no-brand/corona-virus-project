@@ -39,10 +39,13 @@ class SheetService:
                      version=self.version,
                      credentials=self.__creds)
 
-    def get(self, spread_sheet_id=None, doc_range=None):
+    def get(self, spread_sheet_id=None):
         assert spread_sheet_id is not None
-        assert doc_range is not None
         sheet = self.__service.spreadsheets()
+
+        # get the latest sheet
+        sheet_metadata = sheet.get(spreadsheetId=spread_sheet_id).execute()
+        sheet_name = (sheet_metadata['sheets'][0]['properties']['title'])
         result = sheet.values().get(spreadsheetId=spread_sheet_id,
-                                    range=doc_range).execute()
+                                    range=sheet_name).execute()
         return result.get('values', [])

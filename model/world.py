@@ -5,9 +5,7 @@ import pandas as pd
 class WorldCase:
     def __init__(self):
         self.spread_sheet_id = '1yZv9w9zRKwrGTaR-YzmAqMefw4wMlaXocejdxZaTs6w'
-        self.sheet_range = 'Jan31_7pm'
-        self.data = SheetService().get(spread_sheet_id=self.spread_sheet_id,
-                                       doc_range=self.sheet_range)
+        self.data = SheetService().get(spread_sheet_id=self.spread_sheet_id)
         assert self.data is not None
         assert isinstance(self.data, list)
         self.columns = self.data[0]
