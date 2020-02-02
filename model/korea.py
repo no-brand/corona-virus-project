@@ -20,6 +20,7 @@ class KoreanTrail:
     def __type_cast(self):
         self.__dataframe = self.__dataframe.astype({
             'id': 'int32', 'age': 'int32',
+            'contact': 'int64', 'trace': 'int32',
             'latitude': 'float64', 'longitude': 'float64'
         })
 
